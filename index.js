@@ -23,22 +23,24 @@ app.get("/random", async (req,res)=>{
 
 app.post("/search", async (req,res)=>{
     let search = req.body.search;
-    let query = Object.keys(req.body);
+    let query = "query";
     let per_page = "per_page";
     let value = 50;
     config.params[query]=search;
     config.params[per_page]= 50;
-    // console.log(config);
-    try{
-    const result = await axios.get("https://api.unsplash.com/photos/",config)
-    let index= Math.floor(Math.random()*result.data.length);
-    const url = result.data[index].urls.regular
-    res.render("index.ejs", {url : url})
-    }
-    catch(error){
-        console.error(error.response.data)
-        res.render("index.ejs",{error : error.message})
-    }
+    console.log(config);
+    // try{
+    const result = await axios.get("https://api.unsplash.com/search/photos/",config)
+    let index= Math.floor(Math.random()*result.data.results.length);
+    // const url = result.data[index].urls.regular
+    let photo = result.data.results;
+    console.log(result.data.results)
+    res.render("index.ejs", {url : photo[index].urls.small})
+    // }
+    // catch(error){
+    //     console.error(error.response.data)
+    //     res.render("index.ejs",{error : error.message})
+    // }
     
 })
 
