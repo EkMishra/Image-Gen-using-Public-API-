@@ -3,34 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>PixelPulse</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Fraunces:opsz,wght@9..144,700&family=Karla:ital,wght@0,200..800;1,200..800&family=Libre+Baskerville:ital@0;1&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
         <nav>
-            <h1>Here would be the title</h1>
+            <div class="logo"><p class="logo-text">PixelPulse.</p> <div class="box"><span></span> <span id="cursor">|</span></div></div>
         </nav>
     </header>
-    <div class="head-text"> Choose</div>
-    <div class="container">
-        <div class="random">
-            <form action="/random" method="get">
-                <button type="submit">Random</button>
-            </form>
+    <main>
+        <div class="head-text center small-text"> Take your pick: how are we making this image?</div>
+        <div class="container">
+            <div class="random center">
+                <div class="first-text">
+                    Generate your image
+                </div>
+                <p class="second-text">Randomly</p>
+                <div class="small-text">
+                    Discover a random gem from our vast image collection.
+                </div>
+                <form action="/random" method="get">
+                    <button type="submit"><span>Random</span></button>
+                </form>
+            </div>
+            <div class="or-box">
+                <span>OR</span>
+            </div>
+            <div class="search center">
+                <div class="first-text">
+                    Generate your image by 
+                </div>
+                <p class="second-text">Searching</p>
+                <div class="small-text">To get the perfect image, describe what you're looking for.</div>
+                <form action="/search" method="post" class="center form-box">
+                    <input type="text" name="search">
+                    <button type="submit"><span>Search</span></button>
+                </form>
+            </div>
         </div>
-        <div class="search">
-        <form action="/search" method="post">
-            <input type="text" name="search">
-            <button type="submit">Search</button>
-        </form>
+        <div class="image-box center">
+            <%if(locals.url){%>
+            <img src="<%=url%>" alt="data here">
+            
+            <%}else {%>
+                <div class="blackbox">
+                    Generate your image now
+                </div>
+            <%}%>
         </div>
-    </div>
-    <div class="image-box">
-        <%if(locals.url){%>
-        <img src="<%=url%>" alt="data here">
-        <%}else if(locals.error){%>
-            <p><%=error%></p>
-        <%}%>
-    </div>
+    </main>
+    <script src="style.js"></script>
 </body>
 </html>
