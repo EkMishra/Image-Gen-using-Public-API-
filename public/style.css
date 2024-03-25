@@ -5,38 +5,11 @@
 body{
     background-color: #F2FFE9;
 }
-.container{
+/* .container{
     display: grid;
     grid-template-columns: 47.5% 5% 47.5%;
     margin: 10px;
-}
-.or-box>span{
-    position: relative;
-    height: 300px;
-    width: auto;
-    display: block;
-    text-align: center;
-    margin: 10px auto;
-    padding-top: 140px;
-}
-.or-box > span:before{
-    content: "";
-    border-left: 1px solid black;
-    height: 120px;
-    display: block;
-    position: absolute;
-    left: 50%;
-    top: 10px;
-}
-.or-box > span:after{
-    content: "";
-    border-left: 1px solid black;
-    display: block;
-    height: 120px;
-    position: absolute;
-    bottom: 10px;
-    left: 50%;
-}
+} */
 .center{
     display: flex;
     justify-content: start;
@@ -116,7 +89,7 @@ button{
     border: none;
     padding: .25rem 1rem;
     border-radius: .5rem;
-    width: 10vw;
+    min-width: 10vw;
 }
 button span{
     font-family:"Montserrat", sans-serif;
@@ -191,4 +164,81 @@ nav span{
     line-height: 1;
     margin-top: auto;
     vertical-align: bottom;
+}
+@media (max-width: 768px){
+    .container{
+        display: grid;
+        grid-template-rows: 47.5% 5% 47.5%;
+        margin: 10px;
+    }
+    .or-box p{
+        position: relative;
+        width: 60vw;
+        text-align: center;
+        margin: 10px auto;
+        
+    }
+    .or-box p::before{
+        content: "";
+        background-color: black;
+        height: 2px;
+        width: 50vw;
+        position: absolute;
+        top: 50%;
+        right: 0;
+        z-index: -2;
+    }
+    .or-box p:after{
+        content: "";
+        background-color: black;
+        /* display: block; */
+        height: 2px;
+        width: 50vw;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        z-index: -2;
+    }
+    .or-box p>span{
+        background-color: #F2FFE9;
+        z-index: 4;
+        padding: 10px;
+    }
+    
+}
+
+@media (min-width: 769px) {
+    .or-box span{
+        position: relative;
+        height: 300px;
+        width: auto;
+        display: block;
+        text-align: center;
+        margin: 10px auto;
+        padding-top: 140px;
+    }
+    .or-box  span::before{
+        content: "";
+        border-left: 1px solid black;
+        height: 120px;
+        display: block;
+        position: absolute;
+        left: 50%;
+        top: 10px;
+    }
+    .or-box   span::after{
+        content: "";
+        border-left: 1px solid black;
+        display: block;
+        height: 120px;
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+    }
+    .container{
+        display: grid;
+        grid-template-columns: 47.5% 5% 47.5%;
+        margin: 10px;
+    }
+    
 }
